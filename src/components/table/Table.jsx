@@ -1,11 +1,12 @@
 import React from 'react'
 import './table.scss'
 
+
 const Table = () => {
   return (
-    <div className='table'>
+    <section className='table section'>
       table
-    </div>
+    </section>
   )
 }
 

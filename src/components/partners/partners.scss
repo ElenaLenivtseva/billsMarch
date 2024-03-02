@@ -1,4 +1,81 @@
 @import '../../stylesCommon/variables';
-.partners {
+@import '../../stylesCommon/_common';
 
+.partners {
+    &__title {
+        margin-bottom: 7.5rem;
+    }
+
+    &__content {
+        display: flex;
+        gap: 5rem;
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__input {
+        text-align: center;
+        width: 58.7rem;
+        height: 6.3rem;
+        border: 1px dashed $pink;
+        font-size: 3rem;
+        color: $black;
+
+        &:not(:last-child) {
+            margin-bottom: 2.5rem;
+        }
+    }
+    &__namePartner {
+        font-size: 3rem;
+        color: $black;
+
+        &:not(:last-child) {
+            margin-bottom: 2.5rem;
+        }
+    }
+    &__explan {
+        // align-self: center;
+    }
+
+    &__text-explan {
+        color: $black;
+    }
+
+    &__btn {
+        margin-top: 4rem;
+        font-size: 3rem;
+        padding: 1rem 2em;
+        text-align: center;
+        background: none;
+        border: 1px dashed $black;
+        transition: 0.3s ease-in-out;
+        transform: skew(30deg);
+        -webkit-transform: skew(30deg);
+        -moz-transform: skew(30deg);
+        -ms-transform: skew(30deg);
+        -o-transform: skew(30deg);
+
+        &:hover {
+            -webkit-transition: 0.3s ease-in-out;
+            -moz-transition: 0.3s ease-in-out;
+            -ms-transition: 0.3s ease-in-out;
+            -o-transition: 0.3s ease-in-out;
+            background: $black;
+            color: $white;
+            cursor: pointer;
+        }
+
+        &-text {
+            transform: skew(-30deg);
+            -webkit-transform: skew(-30deg);
+            -moz-transform: skew(-30deg);
+            -ms-transform: skew(-30deg);
+            -o-transform: skew(-30deg);
+        }
+
+
+    }
 }

@@ -3,9 +3,9 @@ import './tableDescr.scss'
 
 const TableDescr = () => {
   return (
-    <div className='tableDescr'>
+    <section className='tableDescr section'>
       tableDescr
-    </div>
+    </section>
   )
 }
 
