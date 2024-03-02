@@ -1,3 +1,17 @@
+@import '../../stylesCommon/variables';
 .header {
-    
+    background: $black;
+    padding: 10rem 12rem;
+    &__title, &__subtitle {
+        color: $white;
+    }
+    &__title {
+        font-size: 7rem;
+        margin-bottom: 6.7rem;
+        font-weight: 800;
+    }
+    &__subtitle {
+        font-size: 3rem;
+        font-weight: 400;
+    }
 }
