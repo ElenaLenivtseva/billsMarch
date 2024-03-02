@@ -1,5 +1,25 @@
 @import '../../stylesCommon/variables';
 @import '../../stylesCommon/_common';
-.tableDescr {
 
+.tableDescr {
+    &__top {
+        margin-top: 7.5rem;
+        margin-bottom: 14.6rem;
+        display: flex;
+        align-items: center;
+    }
+
+    &__explan {
+        margin-left: 5%;
+    }
+
+    &__item {
+        font-size: 2rem;
+        list-style-type: '⬚';
+        padding-left: 1.5rem;
+
+        &:not(:last-child) {
+            margin-bottom: 1em;
+        }
+    }
 }

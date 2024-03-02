@@ -43,39 +43,39 @@
     &__text-explan {
         color: $black;
     }
+    
+    // &__btn {
+    //     margin-top: 4rem;
+    //     font-size: 3rem;
+    //     padding: 1rem 2em;
+    //     text-align: center;
+    //     background: none;
+    //     border: 1px dashed $black;
+    //     transition: 0.3s ease-in-out;
+    //     transform: skew(30deg);
+    //     -webkit-transform: skew(30deg);
+    //     -moz-transform: skew(30deg);
+    //     -ms-transform: skew(30deg);
+    //     -o-transform: skew(30deg);
 
-    &__btn {
-        margin-top: 4rem;
-        font-size: 3rem;
-        padding: 1rem 2em;
-        text-align: center;
-        background: none;
-        border: 1px dashed $black;
-        transition: 0.3s ease-in-out;
-        transform: skew(30deg);
-        -webkit-transform: skew(30deg);
-        -moz-transform: skew(30deg);
-        -ms-transform: skew(30deg);
-        -o-transform: skew(30deg);
+    //     &:hover {
+    //         -webkit-transition: 0.3s ease-in-out;
+    //         -moz-transition: 0.3s ease-in-out;
+    //         -ms-transition: 0.3s ease-in-out;
+    //         -o-transition: 0.3s ease-in-out;
+    //         background: $black;
+    //         color: $white;
+    //         cursor: pointer;
+    //     }
 
-        &:hover {
-            -webkit-transition: 0.3s ease-in-out;
-            -moz-transition: 0.3s ease-in-out;
-            -ms-transition: 0.3s ease-in-out;
-            -o-transition: 0.3s ease-in-out;
-            background: $black;
-            color: $white;
-            cursor: pointer;
-        }
-
-        &-text {
-            transform: skew(-30deg);
-            -webkit-transform: skew(-30deg);
-            -moz-transform: skew(-30deg);
-            -ms-transform: skew(-30deg);
-            -o-transform: skew(-30deg);
-        }
+    //     &-text {
+    //         transform: skew(-30deg);
+    //         -webkit-transform: skew(-30deg);
+    //         -moz-transform: skew(-30deg);
+    //         -ms-transform: skew(-30deg);
+    //         -o-transform: skew(-30deg);
+    //     }
 
 
-    }
+    // }
 }

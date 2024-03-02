@@ -14,11 +14,6 @@ function App() {
       <TableDescr/>
       <Table/>
       <Modal/>
-      {/* <Header/>
-      <Partners/>
-      <TableDescr/>
-      <Table/>
-      <Modal/> */}
     </div>
   );
 }

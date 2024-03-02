@@ -1,5 +1,6 @@
 import React from "react";
 import "./partners.scss";
+import Button from "../button/Button";
 
 const Partners = () => {
   return (
@@ -20,10 +21,10 @@ const Partners = () => {
             placeholder="Партнер 2"
           /> */}
           
-          <button className="partners__btn">
+          {/* <button className="partners__btn">
             <p  className="partners__btn-text">Редактировать</p>
-          </button>
-          
+          </button> */}
+          <Button addClass='partners__btn'>Редактировать</Button>
           
         </form>
         <div className="partners__explan">
