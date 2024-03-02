@@ -24,7 +24,7 @@ const Partners = () => {
           {/* <button className="partners__btn">
             <p  className="partners__btn-text">Редактировать</p>
           </button> */}
-          <Button addClass='partners__btn'>Редактировать</Button>
+          <Button addClass='partners__btnn'>Редактировать</Button>
           
         </form>
         <div className="partners__explan">

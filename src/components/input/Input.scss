@@ -1,0 +1,10 @@
+@import '../../stylesCommon/variables';
+@import '../../stylesCommon/_common';
+.input {
+    text-align: center;
+    width: 58.7rem;
+    height: 6.3rem;
+    border: 1px dashed $pink;
+    font-size: 3rem;
+    color: $black;
+}

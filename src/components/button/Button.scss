@@ -37,3 +37,13 @@
 .partners__btn {
     margin-top: 4rem;
 }
+.table__reset {
+    background: $black;
+    color: $white;
+    align-self: center;
+    border: 1px dashed white;
+    &:hover {
+        background: $pink;
+        color: $white;
+    }
+}

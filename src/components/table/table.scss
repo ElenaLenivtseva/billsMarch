@@ -1,5 +1,95 @@
 @import '../../stylesCommon/variables';
 @import '../../stylesCommon/_common';
-.table {
 
+.table {
+    display: flex;
+    flex-direction: column;
+    &__main {
+        width: 100%;
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    &__titles {
+        background: $black;
+        color: $white;
+        display: grid;
+        align-items: center;
+        height: 15rem;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    }
+
+    &__title {
+        // align-self: center;
+
+    }
+
+    &__check {
+        display: grid;
+        height: 12.5rem;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        align-items: center;
+
+        color: $white;
+
+        border-bottom: 1px solid $pink;
+
+
+    }
+
+    &__checkTitle {
+        align-self: flex-start;
+        height: 100%;
+        display: grid;
+        grid-template-rows: 1fr 2fr;
+        background: $black;
+    }
+
+    &__checkNumber {
+        align-self: center;
+        text-transform: uppercase;
+
+    }
+
+    &__checkActions {
+        width: 100%;
+        display: flex;
+    }
+
+    &__btn {
+        flex: 1;
+        border: 1px dashed $white;
+        background: none;
+        color: $white;
+        transition: 0.3s ease-in-out;
+        -webkit-transition: 0.3s ease-in-out;
+        -moz-transition: 0.3s ease-in-out;
+        -ms-transition: 0.3s ease-in-out;
+        -o-transition: 0.3s ease-in-out;
+        font-size: 2rem;
+
+        &:hover {
+
+
+            background: $white;
+            color: $black;
+            cursor: pointer;
+        }
+    }
+
+    &__checkInfo {
+        font-weight: 700;
+        color: $black;
+    }
+
+    &__total {
+        text-align: left;
+        font-size: 3rem;
+        padding: 4.5rem 14rem;
+        background: linear-gradient(to right, rgba(255, 173, 126, 1), rgba(255, 173, 126, 0.3));
+    }
+
+    &__total-bold {
+        font-weight: 700;
+    }
 }
