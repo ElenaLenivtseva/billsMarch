@@ -1,55 +1,63 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import "./table.scss";
 import Button from "../button/Button";
 const initialChecks = [
-  {id: '1',
-  total: '500',
-  payer: 'Партнер 1',
-  spendingFirst: '20',
-  spendingSecond: '80',
-  debtFirst: 'не должен',
-  debtSecond: '280',
-  others: 0,
-},
-  {id: '2',
-  total: '500',
-  payer: 'Партнер 1',
-  spendingFirst: '20',
-  spendingSecond: '80',
-  debtFirst: 'не должен',
-  debtSecond: '280',
-  others: 0,
-},
-  {id: '3',
-  total: '500',
-  payer: 'Партнер 1',
-  spendingFirst: '20',
-  spendingSecond: '80',
-  debtFirst: 'не должен',
-  debtSecond: '280',
-  others: 0,
-},
-  {id: '4',
-  total: '500',
-  payer: 'Партнер 1',
-  spendingFirst: '20',
-  spendingSecond: '80',
-  debtFirst: 'не должен',
-  debtSecond: '280',
-  others: 0,
-},
-  {id: '5',
-  total: '500',
-  payer: 'Партнер 1',
-  spendingFirst: '20',
-  spendingSecond: '80',
-  debtFirst: 'не должен',
-  debtSecond: '280',
-  others: 0,
-},
-]
+  {
+    id: "1",
+    total: "500",
+    payer: "Партнер 1",
+    spendingFirst: "20",
+    spendingSecond: "80",
+    debtFirst: "не должен",
+    debtSecond: "280",
+    others: 0,
+  },
+  {
+    id: "2",
+    total: "500",
+    payer: "Партнер 1",
+    spendingFirst: "20",
+    spendingSecond: "80",
+    debtFirst: "не должен",
+    debtSecond: "280",
+    others: 0,
+  },
+  {
+    id: "3",
+    total: "500",
+    payer: "Партнер 1",
+    spendingFirst: "20",
+    spendingSecond: "80",
+    debtFirst: "не должен",
+    debtSecond: "280",
+    others: 0,
+  },
+  {
+    id: "4",
+    total: "500",
+    payer: "Партнер 1",
+    spendingFirst: "20",
+    spendingSecond: "80",
+    debtFirst: "не должен",
+    debtSecond: "280",
+    others: 0,
+  },
+  {
+    id: "5",
+    total: "500",
+    payer: "Партнер 1",
+    spendingFirst: "20",
+    spendingSecond: "80",
+    debtFirst: "не должен",
+    debtSecond: "280",
+    others: 0,
+  },
+];
 const Table = () => {
-  const [checks, setChecks] = useState(initialChecks)
+  const [checks, setChecks] = useState(initialChecks);
+  const handleDeleteCheck = (targetIndex) => {
+    setChecks(checks.filter((_, idx) => idx !== targetIndex));
+  };
   return (
     <div className="table">
       <Button addClass="table__reset">Очистить таблицу</Button>
@@ -76,42 +84,48 @@ const Table = () => {
             Партнера 2
           </div>
         </div>
-        {checks.map((check, idx)=> {
+        {checks.map((check, idx) => {
           return (
-            <div className="table__check">
-          <div className="table__checkTitle">
-            <div className="table__checkActions">
-              <button className="table__btn table__checkRemove">удалить</button>
-              <button className="table__btn table__checkEdit">отред.</button>
+            <div className="table__check" key={check.id}>
+              <div className="table__checkTitle">
+                <div className="table__checkActions">
+                  <button
+                    className="table__btn table__checkRemove"
+                    onClick={(e)=>{e.preventDefault();
+                      console.log('что происходит');handleDeleteCheck(idx)}}
+                  >
+                    удалить
+                  </button>
+                  <button className="table__btn table__checkEdit">
+                    отред.
+                  </button>
+                </div>
+                <p className="table__checkNumber">Чек {check.id}</p>
+              </div>
+              <div className="table__checkTotal">
+                <p className="table__checkInfo">{check.total}</p>
+              </div>
+              <div className="table__checkPayer">
+                <p className="table__checkInfo">{check.payer}</p>
+              </div>
+              <div className="table__checkSpendFirst">
+                <p className="table__checkInfo">{check.spendingFirst}</p>
+              </div>
+              <div className="table__checkSpendSecond">
+                <p className="table__checkInfo">{check.spendingSecond}</p>
+              </div>
+              <div className="table__checkSpendOther">
+                <p className="table__checkInfo">{check.others}</p>
+              </div>
+              <div className="table__checkDebtFirst">
+                <p className="table__checkInfo">{check.debtFirst}</p>
+              </div>
+              <div className="table__checkDebtSecond">
+                <p className="table__checkInfo">{check.debtSecond}</p>
+              </div>
             </div>
-            <p className="table__checkNumber">Чек {idx+1}</p>
-          </div>
-          <div className="table__checkTotal">
-            <p className="table__checkInfo">{check.total}</p>
-          </div>
-          <div className="table__checkPayer">
-            <p className="table__checkInfo">{check.payer}</p>
-          </div>
-          <div className="table__checkSpendFirst">
-            <p className="table__checkInfo">{check.spendingFirst}</p>
-          </div>
-          <div className="table__checkSpendSecond">
-            <p className="table__checkInfo">{check.spendingSecond}</p>
-          </div>
-          <div className="table__checkSpendOther">
-            <p className="table__checkInfo">{check.others}</p>
-          </div>
-          <div className="table__checkDebtFirst">
-            <p className="table__checkInfo">{check.debtFirst}</p>
-          </div>
-          <div className="table__checkDebtSecond">
-            <p className="table__checkInfo">{check.debtSecond}</p>
-          </div>
-        </div>
-          )
+          );
         })}
-        
-        
 
         <div className="table__total">
           <p className="table__total-text">
