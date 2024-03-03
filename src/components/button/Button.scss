@@ -30,7 +30,10 @@
         cursor: pointer;
     }
 
-    
+    &_left {
+        align-self: flex-end;
+        margin-top: 5rem;
+    }
 
 
 }
@@ -40,7 +43,7 @@
 .table__reset {
     background: $black;
     color: $white;
-    align-self: center;
+    // align-self: center;
     border: 1px dashed white;
     &:hover {
         background: $pink;

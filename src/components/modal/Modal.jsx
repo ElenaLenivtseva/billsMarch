@@ -1,14 +1,16 @@
 import React from "react";
 import "./modal.scss";
 import Input from "../input/Input";
+import Button from "../button/Button";
 
 const Modal = () => {
   return (
     <div className="modal">
       <div className="modal__content">
         <div className="modal__actions">
-          <img className="modal__reset" src="" alt="" />
-          <img className="modal__close" src="" alt="" />
+          <p className="modal__icon modal__reset">↺</p>
+          <p className="modal__icon modal__close">🗙</p>
+      
         </div>
         <form className="modal__form">
           <Input
@@ -41,8 +43,7 @@ const Modal = () => {
             labelDescr="Возможно, вы покупали что-то другу по его просьбе, и он уже перевел вам деньги за покупку. Т.е. это что-то не общее для вашей пары, ни индивидуальное каждого партнера, а нечто чужое."
             name="others"
           />
-          <button className="button">
-            Окей</button>
+          <Button addClass='button_left'>Oкей</Button>
         </form>
       </div>
     </div>

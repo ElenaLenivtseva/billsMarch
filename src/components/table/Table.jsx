@@ -1,8 +1,55 @@
-import React from "react";
+import React, {useState} from "react";
 import "./table.scss";
 import Button from "../button/Button";
-
+const initialChecks = [
+  {id: '1',
+  total: '500',
+  payer: 'Партнер 1',
+  spendingFirst: '20',
+  spendingSecond: '80',
+  debtFirst: 'не должен',
+  debtSecond: '280',
+  others: 0,
+},
+  {id: '2',
+  total: '500',
+  payer: 'Партнер 1',
+  spendingFirst: '20',
+  spendingSecond: '80',
+  debtFirst: 'не должен',
+  debtSecond: '280',
+  others: 0,
+},
+  {id: '3',
+  total: '500',
+  payer: 'Партнер 1',
+  spendingFirst: '20',
+  spendingSecond: '80',
+  debtFirst: 'не должен',
+  debtSecond: '280',
+  others: 0,
+},
+  {id: '4',
+  total: '500',
+  payer: 'Партнер 1',
+  spendingFirst: '20',
+  spendingSecond: '80',
+  debtFirst: 'не должен',
+  debtSecond: '280',
+  others: 0,
+},
+  {id: '5',
+  total: '500',
+  payer: 'Партнер 1',
+  spendingFirst: '20',
+  spendingSecond: '80',
+  debtFirst: 'не должен',
+  debtSecond: '280',
+  others: 0,
+},
+]
 const Table = () => {
+  const [checks, setChecks] = useState(initialChecks)
   return (
     <div className="table">
       <Button addClass="table__reset">Очистить таблицу</Button>
@@ -29,66 +76,42 @@ const Table = () => {
             Партнера 2
           </div>
         </div>
-        <div className="table__check">
+        {checks.map((check, idx)=> {
+          return (
+            <div className="table__check">
           <div className="table__checkTitle">
             <div className="table__checkActions">
               <button className="table__btn table__checkRemove">удалить</button>
               <button className="table__btn table__checkEdit">отред.</button>
             </div>
-            <p className="table__checkNumber">Чек 1</p>
+            <p className="table__checkNumber">Чек {idx+1}</p>
           </div>
           <div className="table__checkTotal">
-            <p className="table__checkInfo">1000</p>
+            <p className="table__checkInfo">{check.total}</p>
           </div>
           <div className="table__checkPayer">
-            <p className="table__checkInfo">Партнер 1</p>
+            <p className="table__checkInfo">{check.payer}</p>
           </div>
           <div className="table__checkSpendFirst">
-            <p className="table__checkInfo">200</p>
+            <p className="table__checkInfo">{check.spendingFirst}</p>
           </div>
           <div className="table__checkSpendSecond">
-            <p className="table__checkInfo">300</p>
+            <p className="table__checkInfo">{check.spendingSecond}</p>
           </div>
           <div className="table__checkSpendOther">
-            <p className="table__checkInfo">0</p>
+            <p className="table__checkInfo">{check.others}</p>
           </div>
           <div className="table__checkDebtFirst">
-            <p className="table__checkInfo">не должен</p>
+            <p className="table__checkInfo">{check.debtFirst}</p>
           </div>
           <div className="table__checkDebtSecond">
-            <p className="table__checkInfo">550</p>
+            <p className="table__checkInfo">{check.debtSecond}</p>
           </div>
         </div>
-        <div className="table__check">
-          <div className="table__checkTitle">
-            <div className="table__checkActions">
-              <button className="table__btn table__checkRemove">удалить</button>
-              <button className="table__btn table__checkEdit">отред.</button>
-            </div>
-            <p className="table__checkNumber">Чек 1</p>
-          </div>
-          <div className="table__checkTotal">
-            <p className="table__checkInfo">1000</p>
-          </div>
-          <div className="table__checkPayer">
-            <p className="table__checkInfo">Партнер 1</p>
-          </div>
-          <div className="table__checkSpendFirst">
-            <p className="table__checkInfo">200</p>
-          </div>
-          <div className="table__checkSpendSecond">
-            <p className="table__checkInfo">300</p>
-          </div>
-          <div className="table__checkSpendOther">
-            <p className="table__checkInfo">0</p>
-          </div>
-          <div className="table__checkDebtFirst">
-            <p className="table__checkInfo">не должен</p>
-          </div>
-          <div className="table__checkDebtSecond">
-            <p className="table__checkInfo">550</p>
-          </div>
-        </div>
+          )
+        })}
+        
+        
 
         <div className="table__total">
           <p className="table__total-text">

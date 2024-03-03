@@ -1,10 +1,36 @@
 @import '../../stylesCommon/variables';
 @import '../../stylesCommon/_common';
+
 .input {
-    text-align: center;
-    width: 58.7rem;
-    height: 6.3rem;
-    border: 1px dashed $pink;
-    font-size: 3rem;
-    color: $black;
+    &:not(:last-child) {
+        margin-bottom: 3rem;
+    }
+
+    &__title {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+        padding-left: 6.8rem;
+    }
+
+    &__descr {
+        font-size: 2rem;
+        margin-bottom: 1.6rem;
+        padding-left: 6.8rem;
+    }
+
+    &__field,
+    &__fieldSelect {
+        width: 50%;
+        padding: 0.68rem 0.2rem;
+        border: 1px dashed $pink;
+        font-size: 2rem;
+        color: $black;
+        padding-left: 6.8rem;
+    }
+
+    &__option {
+        font-size: 2rem;
+        color: $black;
+    }
 }

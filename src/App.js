@@ -13,7 +13,7 @@ function App() {
       <Partners/>
       <TableDescr/>
       <Table/>
-      {/* <Modal/> */}
+      <Modal/>
     </div>
   );
 }

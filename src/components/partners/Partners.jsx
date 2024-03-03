@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import "./partners.scss";
 import Button from "../button/Button";
 
 const Partners = () => {
+  const [isEditing, setIsEditing] = useState(false)
   return (
     <section className="partners section">
       <h3 className="sectionSubtitle partners__title">Имена партнеров</h3>
       <div className="partners__content">
+        
         <form className="partners__form">
             <p className="partners__namePartner">Имя: Партнер 1</p>
             <p className="partners__namePartner">Имя: Партнер 2</p>
