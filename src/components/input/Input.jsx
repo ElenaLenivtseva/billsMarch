@@ -6,6 +6,7 @@ const Input = ({
   labelTitle,
   labelDescr,
   name,
+  onChange
 }) => {
   if (name === "payer") {
     return (
@@ -14,7 +15,7 @@ const Input = ({
           <h6 className="input__title">{labelTitle}</h6>
           <p className="input__descr">{labelDescr}</p>
         </label>
-        <select name={name} className="input__fieldSelect">
+        <select name={name} className="input__fieldSelect" onChange={onChange}>
           <option value="partner1" selected className="input__option">Партнер 1</option>
           <option value="partner2" className="input__option">
             Партнер 2
@@ -34,6 +35,7 @@ const Input = ({
         className="input__field"
         placeholder={placeholder}
         name={name}
+        onChange={onChange}
       />
     </div>
   );

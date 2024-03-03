@@ -3,31 +3,50 @@ import "./partners.scss";
 import Button from "../button/Button";
 
 const Partners = () => {
-  const [isEditing, setIsEditing] = useState(false)
+  const [isEditing, setIsEditing] = useState(false);
+  const [partners, setPartners] = useState({
+    partner1: "Партнер 1",
+    partner2: "Партнер 2",
+  });
+  function handleClick(e) {
+    e.preventDefault();
+    setIsEditing(!isEditing);
+  }
   return (
     <section className="partners section">
       <h3 className="sectionSubtitle partners__title">Имена партнеров</h3>
       <div className="partners__content">
-        
         <form className="partners__form">
-            <p className="partners__namePartner">Имя: Партнер 1</p>
-            <p className="partners__namePartner">Имя: Партнер 2</p>
-          {/* <input
-            type="text"
-            className="partners__input"
-            placeholder="Партнер 1"
-          />
-          <input
-            type="text"
-            className="partners__input"
-            placeholder="Партнер 2"
-          /> */}
-          
-          {/* <button className="partners__btn">
-            <p  className="partners__btn-text">Редактировать</p>
-          </button> */}
-          <Button addClass='partners__btnn'>Редактировать</Button>
-          
+          {isEditing ? (
+            <>
+              <input
+                type="text"
+                className="partners__input"
+                placeholder="Партнер 1"
+                value={partners.partner1}
+                onChange={(e) =>
+                  setPartners({ ...partners, partner1: e.target.value })
+                }
+              />
+              <input
+                type="text"
+                className="partners__input"
+                placeholder="Партнер 2"
+                value={partners.partner2}
+                onChange={(e) =>
+                  setPartners({ ...partners, partner2: e.target.value })
+                }
+              />
+            </>
+          ) : (
+            <>
+              <p className="partners__namePartner">Имя: {partners.partner1}</p>
+              <p className="partners__namePartner">Имя: {partners.partner2}</p>
+            </>
+          )}
+          <Button addClass="partners__btn" onClick={(e) => handleClick(e)}>
+            {isEditing ? "Сохранить" : "Редактировать"}
+          </Button>
         </form>
         <div className="partners__explan">
           <p className="mainText partners__text-explan">
