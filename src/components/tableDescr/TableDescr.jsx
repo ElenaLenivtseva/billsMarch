@@ -2,13 +2,17 @@ import React from "react";
 import "./tableDescr.scss";
 import Button from "../button/Button";
 
-const TableDescr = () => {
+const TableDescr = ({isFormOpened, setIsFormOpened}) => {
+  const handleOpenForm = (e) => {
+    e.preventDefault();
+    setIsFormOpened(true)
+  }
   return (
     <section className="tableDescr section">
       <h3 className="sectionSubtitle">Таблица подсчетов</h3>
       <div className="tableDescr__content">
         <div className="tableDescr__top">
-          <Button>Добавить чек</Button>
+          <Button onClick={(e)=>handleOpenForm(e)}>Добавить чек</Button>
           <p className="mainText tableDescr__explan">
             После того, как вы введете информацию с чека, <br/>все данные, в т.ч. кто
             кому и сколько должен, <br/>отобразятся в таблице ниже.

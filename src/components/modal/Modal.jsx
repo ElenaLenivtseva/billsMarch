@@ -3,7 +3,7 @@ import "./modal.scss";
 import Input from "../input/Input";
 import Button from "../button/Button";
 
-const Modal = () => {
+const Modal = ({isFormOpened, setIsFormOpened}) => {
   const initialForm = {
     total: "0",
     payer: "Partner1",
@@ -19,6 +19,11 @@ const Modal = () => {
       [name]: e.target.value,
     })
   }
+  const handleCloseForm =(e)=> {
+    e.preventDefault();
+    setIsFormOpened(false)
+    setForm(initialForm)
+  }
   const resetForm=(e)=>{
     e.preventDefault()
     setForm(initialForm)
@@ -28,7 +33,7 @@ const Modal = () => {
       <div className="modal__content">
         <div className="modal__actions">
           <p className="modal__icon modal__reset" onClick={(e)=>resetForm(e)}>↺</p>
-          <p className="modal__icon modal__close">🗙</p>
+          <p className="modal__icon modal__close" onClick={(e)=>handleCloseForm(e)}>🗙</p>
         </div>
         <form className="modal__form">
           <Input
