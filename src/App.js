@@ -20,9 +20,9 @@ function App() {
         isFormOpened={isFormOpened}
         setIsFormOpened={setIsFormOpened}
       />
-      <Table />
+      <Table partners={partners}/>
       {isFormOpened && (
-        <Modal isFormOpened={isFormOpened} setIsFormOpened={setIsFormOpened} />
+        <Modal isFormOpened={isFormOpened} setIsFormOpened={setIsFormOpened} partners={partners}/>
       )}
     </div>
   );

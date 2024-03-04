@@ -3,10 +3,10 @@ import "./modal.scss";
 import Input from "../input/Input";
 import Button from "../button/Button";
 
-const Modal = ({isFormOpened, setIsFormOpened}) => {
+const Modal = ({isFormOpened, setIsFormOpened, partners}) => {
   const initialForm = {
     total: "0",
-    payer: "Partner1",
+    payer: partners.partner1,
     spendingFirst: "0",
     spendingSecond: "0",
     others: "0",
@@ -51,6 +51,7 @@ const Modal = ({isFormOpened, setIsFormOpened}) => {
             name="payer"
             value={form.payer}
             onChange = {(e)=>handleChange(e)}
+            partners ={partners}
           />
           <Input
             placeholder="0"
