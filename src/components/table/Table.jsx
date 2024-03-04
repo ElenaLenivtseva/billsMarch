@@ -58,9 +58,13 @@ const Table = () => {
   const handleDeleteCheck = (targetIndex) => {
     setChecks(checks.filter((_, idx) => idx !== targetIndex));
   };
+  const handleReset=(e)=>{
+    e.preventDefault();
+    setChecks([])
+  }
   return (
     <div className="table">
-      <Button addClass="table__reset">Очистить таблицу</Button>
+      <Button addClass="table__reset" onClick={(e)=>handleReset(e)}>Очистить таблицу</Button>
       <div className="table__main">
         <div className="table__titles">
           <div className="table__title table__titleNum">№ чека</div>
@@ -128,10 +132,11 @@ const Table = () => {
         })}
 
         <div className="table__total">
-          <p className="table__total-text">
-            Долг <span className="table__total-bold">Партнера 2</span>{" "}
-            составляет: <span className="table__total-bold">1750</span>
-          </p>
+          
+            {checks.length>0 ? <p className="table__total-text">Долг <span className="table__total-bold">Партнера 2</span>
+            составляет: <span className="table__total-bold">1750</span> </p>: <p className="table__total-text">Добавьте чеки, чтобы увидеть сумму долга</p>}
+            
+          
         </div>
       </div>
     </div>

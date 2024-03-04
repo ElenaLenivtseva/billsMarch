@@ -4,13 +4,17 @@ import Modal from './components/modal/Modal';
 import Partners from './components/partners/Partners';
 import Table from './components/table/Table';
 import TableDescr from './components/tableDescr/TableDescr';
-
+import { useState } from 'react';
 
 function App() {
+  const [partners, setPartners] = useState({
+    partner1: "Партнер 1",
+    partner2: "Партнер 2",
+  });
   return (
     <div className="App">
       <Header/>
-      <Partners/>
+      <Partners partners={partners} setPartners={setPartners}/>
       <TableDescr/>
       <Table/>
       <Modal/>

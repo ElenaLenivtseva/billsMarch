@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import "./partners.scss";
 import Button from "../button/Button";
 
-const Partners = () => {
+const Partners = ({partners, setPartners}) => {
   const [isEditing, setIsEditing] = useState(false);
-  const [partners, setPartners] = useState({
-    partner1: "Партнер 1",
-    partner2: "Партнер 2",
-  });
+  // const [partners, setPartners] = useState({
+  //   partner1: "Партнер 1",
+  //   partner2: "Партнер 2",
+  // });
   function handleClick(e) {
     e.preventDefault();
     setIsEditing(!isEditing);
