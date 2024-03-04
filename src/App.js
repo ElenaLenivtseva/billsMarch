@@ -6,12 +6,66 @@ import Table from "./components/table/Table";
 import TableDescr from "./components/tableDescr/TableDescr";
 import { useState } from "react";
 
+const initialChecks = [
+  {
+    id: "1",
+    total: "500",
+    payer: "Партнер 1",
+    spendingFirst: "20",
+    spendingSecond: "80",
+    debtFirst: "не должен",
+    debtSecond: "280",
+    others: 0,
+  },
+  {
+    id: "2",
+    total: "500",
+    payer: "Партнер 1",
+    spendingFirst: "20",
+    spendingSecond: "80",
+    debtFirst: "не должен",
+    debtSecond: "280",
+    others: 0,
+  },
+  {
+    id: "3",
+    total: "500",
+    payer: "Партнер 1",
+    spendingFirst: "20",
+    spendingSecond: "80",
+    debtFirst: "не должен",
+    debtSecond: "280",
+    others: 0,
+  },
+  {
+    id: "4",
+    total: "500",
+    payer: "Партнер 1",
+    spendingFirst: "20",
+    spendingSecond: "80",
+    debtFirst: "не должен",
+    debtSecond: "280",
+    others: 0,
+  },
+  {
+    id: "5",
+    total: "500",
+    payer: "Партнер 1",
+    spendingFirst: "20",
+    spendingSecond: "80",
+    debtFirst: "не должен",
+    debtSecond: "280",
+    others: 0,
+  },
+];
+
 function App() {
   const [partners, setPartners] = useState({
     partner1: "Партнер 1",
     partner2: "Партнер 2",
   });
   const [isFormOpened, setIsFormOpened] = useState(false);
+  const [checks, setChecks] = useState(initialChecks);
   return (
     <div className="App">
       <Header />
@@ -20,9 +74,15 @@ function App() {
         isFormOpened={isFormOpened}
         setIsFormOpened={setIsFormOpened}
       />
-      <Table partners={partners}/>
+      <Table partners={partners} checks={checks} setChecks={setChecks} />
       {isFormOpened && (
-        <Modal isFormOpened={isFormOpened} setIsFormOpened={setIsFormOpened} partners={partners}/>
+        <Modal
+          isFormOpened={isFormOpened}
+          setIsFormOpened={setIsFormOpened}
+          partners={partners}
+          checks={checks}
+          setChecks={setChecks}
+        />
       )}
     </div>
   );

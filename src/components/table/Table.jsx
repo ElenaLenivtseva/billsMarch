@@ -1,60 +1,8 @@
 import React, { useState } from "react";
 import "./table.scss";
 import Button from "../button/Button";
-const initialChecks = [
-  {
-    id: "1",
-    total: "500",
-    payer: "Партнер 1",
-    spendingFirst: "20",
-    spendingSecond: "80",
-    debtFirst: "не должен",
-    debtSecond: "280",
-    others: 0,
-  },
-  {
-    id: "2",
-    total: "500",
-    payer: "Партнер 1",
-    spendingFirst: "20",
-    spendingSecond: "80",
-    debtFirst: "не должен",
-    debtSecond: "280",
-    others: 0,
-  },
-  {
-    id: "3",
-    total: "500",
-    payer: "Партнер 1",
-    spendingFirst: "20",
-    spendingSecond: "80",
-    debtFirst: "не должен",
-    debtSecond: "280",
-    others: 0,
-  },
-  {
-    id: "4",
-    total: "500",
-    payer: "Партнер 1",
-    spendingFirst: "20",
-    spendingSecond: "80",
-    debtFirst: "не должен",
-    debtSecond: "280",
-    others: 0,
-  },
-  {
-    id: "5",
-    total: "500",
-    payer: "Партнер 1",
-    spendingFirst: "20",
-    spendingSecond: "80",
-    debtFirst: "не должен",
-    debtSecond: "280",
-    others: 0,
-  },
-];
-const Table = ({partners}) => {
-  const [checks, setChecks] = useState(initialChecks);
+
+const Table = ({partners, checks, setChecks}) => {
   const handleDeleteCheck = (targetIndex) => {
     setChecks(checks.filter((_, idx) => idx !== targetIndex));
   };
@@ -109,7 +57,7 @@ const Table = ({partners}) => {
                     отред.
                   </button>
                 </div>
-                <p className="table__checkNumber">Чек {check.id}</p>
+                <p className="table__checkNumber">Чек {idx}</p>
               </div>
               <div className="table__checkTotal">
                 <p className="table__checkInfo">{check.total}</p>

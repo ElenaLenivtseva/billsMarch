@@ -3,7 +3,7 @@ import "./modal.scss";
 import Input from "../input/Input";
 import Button from "../button/Button";
 
-const Modal = ({isFormOpened, setIsFormOpened, partners}) => {
+const Modal = ({isFormOpened, setIsFormOpened, partners, checks, setChecks}) => {
   const initialForm = {
     total: "0",
     payer: partners.partner1,
@@ -28,12 +28,25 @@ const Modal = ({isFormOpened, setIsFormOpened, partners}) => {
     e.preventDefault()
     setForm(initialForm)
   }
+  const handleAddCheck=(e)=>{
+    e.preventDefault();
+    let now = new Date().toString();
+    setChecks([
+      ...checks,
+      {
+        ...form,
+        id: [now]
+      }
+    ])
+    setIsFormOpened(false)
+    setForm(initialForm)
+  }
   return (
     <div className="modal">
       <div className="modal__content">
         <div className="modal__actions">
           <p className="modal__icon modal__reset" onClick={(e)=>resetForm(e)}>↺</p>
-          <p className="modal__icon modal__close" onClick={(e)=>handleCloseForm(e)}>🗙</p>
+          <p className="modal__icon modal__close" onClick={(e, form)=>handleCloseForm(e, form)}>🗙</p>
         </div>
         <form className="modal__form">
           <Input
@@ -77,7 +90,7 @@ const Modal = ({isFormOpened, setIsFormOpened, partners}) => {
             value={form.others}
             onChange = {(e)=>handleChange(e)}
           />
-          <Button addClass="button_left">Oкей</Button>
+          <Button addClass="button_left" onClick={(e)=>handleAddCheck(e)}>Oкей</Button>
         </form>
       </div>
     </div>
