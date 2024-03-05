@@ -1,8 +1,13 @@
 import React, { useState } from "react";
 import "./table.scss";
 import Button from "../button/Button";
+import {
+  individualSpendings,
+  countDebtOfTheCheck,
+  totalDebt,
+} from "./countFunctions";
 
-const Table = ({partners, checks, setChecks}) => {
+const Table = ({ partners, checks, setChecks }) => {
   const handleDeleteCheck = (targetIndex) => {
     setChecks(checks.filter((_, idx) => idx !== targetIndex));
   };
@@ -10,6 +15,8 @@ const Table = ({partners, checks, setChecks}) => {
     e.preventDefault();
     setChecks([]);
   };
+
+  let allDebts = 0;
   return (
     <div className="table">
       <Button addClass="table__reset" onClick={(e) => handleReset(e)}>
@@ -39,6 +46,23 @@ const Table = ({partners, checks, setChecks}) => {
           </div>
         </div>
         {checks.map((check, idx) => {
+          // Individual spendings
+          const partner1Spendings = individualSpendings(check.spendingFirst);
+          const partner2Spendings = individualSpendings(check.spendingSecond);
+          const othersSpendings = individualSpendings(check.others);
+
+          // debt of check
+          const [debtOfParther1, debtOfParther2] = countDebtOfTheCheck(
+            check.total,
+            othersSpendings,
+            partner1Spendings,
+            partner2Spendings,
+            check.payer,
+            partners.partner1
+          );
+          allDebts = totalDebt(allDebts, debtOfParther1, debtOfParther2);
+          console.log(allDebts);
+
           return (
             <div className="table__check" key={check.id}>
               <div className="table__checkTitle">
@@ -66,19 +90,19 @@ const Table = ({partners, checks, setChecks}) => {
                 <p className="table__checkInfo">{check.payer}</p>
               </div>
               <div className="table__checkSpendFirst">
-                <p className="table__checkInfo">{check.spendingFirst}</p>
+                <p className="table__checkInfo">{partner1Spendings}</p>
               </div>
               <div className="table__checkSpendSecond">
-                <p className="table__checkInfo">{check.spendingSecond}</p>
+                <p className="table__checkInfo">{partner2Spendings}</p>
               </div>
               <div className="table__checkSpendOther">
-                <p className="table__checkInfo">{check.others}</p>
+                <p className="table__checkInfo">{othersSpendings}</p>
               </div>
               <div className="table__checkDebtFirst">
-                <p className="table__checkInfo">{check.debtFirst}</p>
+                <p className="table__checkInfo">{debtOfParther1}</p>
               </div>
               <div className="table__checkDebtSecond">
-                <p className="table__checkInfo">{check.debtSecond}</p>
+                <p className="table__checkInfo">{debtOfParther2}</p>
               </div>
             </div>
           );
@@ -87,8 +111,12 @@ const Table = ({partners, checks, setChecks}) => {
         <div className="table__total">
           {checks.length > 0 ? (
             <p className="table__total-text">
-              Долг <span className="table__total-bold">{partners.partner1} </span>
-              составляет: <span className="table__total-bold">1750</span>{" "}
+              Долг{" "}
+              <span className="table__total-bold">
+                {allDebts < 0 ? partners.partner2 : partners.partner1}{" "}
+              </span>{" "}
+              составляет:{" "}
+              <span className="table__total-bold">{Math.abs(allDebts)}</span>
             </p>
           ) : (
             <p className="table__total-text">
