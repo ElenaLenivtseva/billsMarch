@@ -3,7 +3,7 @@ import "./modal.scss";
 import Input from "../input/Input";
 import Button from "../button/Button";
 
-const Modal = ({isFormOpened, setIsFormOpened, partners, checks, setChecks}) => {
+const Modal = ({setIsFormOpened, partners, checks, setChecks, setCheckToEdit, defaultValue, handleSubmit}) => {
   const initialForm = {
     total: "0",
     payer: partners.partner1,
@@ -11,7 +11,7 @@ const Modal = ({isFormOpened, setIsFormOpened, partners, checks, setChecks}) => 
     spendingSecond: "0",
     others: "0",
   }
-  const [form, setForm] = useState(initialForm);
+  const [form, setForm] = useState(defaultValue || initialForm);
   const handleChange =(e)=> {
     const name = e.target.name;
     setForm({
@@ -21,7 +21,9 @@ const Modal = ({isFormOpened, setIsFormOpened, partners, checks, setChecks}) => 
   }
   const handleCloseForm =(e)=> {
     e.preventDefault();
+    setCheckToEdit(null)
     setIsFormOpened(false)
+
     setForm(initialForm)
   }
   const resetForm=(e)=>{
@@ -31,16 +33,25 @@ const Modal = ({isFormOpened, setIsFormOpened, partners, checks, setChecks}) => 
   const handleAddCheck=(e)=>{
     e.preventDefault();
     let now = new Date().toString();
-    setChecks([
-      ...checks,
-      {
-        ...form,
-        id: [now]
-      }
-    ])
-    setIsFormOpened(false)
+    handleSubmit(form, now)
     setForm(initialForm)
+    setIsFormOpened(false)
+    setCheckToEdit(null)
+    
   }
+  // const handleAddCheck=(e)=>{
+  //   e.preventDefault();
+  //   let now = new Date().toString();
+  //   setChecks([
+  //     ...checks,
+  //     {
+  //       ...form,
+  //       id: [now]
+  //     }
+  //   ])
+  //   setIsFormOpened(false)
+  //   setForm(initialForm)
+  // }
   return (
     <div className="modal">
       <div className="modal__content">

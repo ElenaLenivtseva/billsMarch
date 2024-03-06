@@ -2,7 +2,7 @@ import React from "react";
 import "./tableDescr.scss";
 import Button from "../button/Button";
 
-const TableDescr = ({isFormOpened, setIsFormOpened}) => {
+const TableDescr = ({setIsFormOpened}) => {
   const handleOpenForm = (e) => {
     e.preventDefault();
     setIsFormOpened(true)

@@ -7,14 +7,8 @@ import {
   totalDebt,
 } from "./countFunctions";
 
-const Table = ({ partners, checks, setChecks }) => {
-  const handleDeleteCheck = (targetIndex) => {
-    setChecks(checks.filter((_, idx) => idx !== targetIndex));
-  };
-  const handleReset = (e) => {
-    e.preventDefault();
-    setChecks([]);
-  };
+const Table = ({ partners, checks, setChecks,handleEditCheck,handleDeleteCheck, handleReset}) => {
+  
 
   let allDebts = 0;
   return (
@@ -77,7 +71,7 @@ const Table = ({ partners, checks, setChecks }) => {
                   >
                     удалить
                   </button>
-                  <button className="table__btn table__checkEdit">
+                  <button className="table__btn table__checkEdit" onClick={()=>handleEditCheck(idx)}>
                     отред.
                   </button>
                 </div>
