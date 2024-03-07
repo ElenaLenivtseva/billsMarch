@@ -55,7 +55,6 @@ const Table = ({ partners, checks, setChecks,handleEditCheck,handleDeleteCheck, 
             partners.partner1
           );
           allDebts = totalDebt(allDebts, debtOfParther1, debtOfParther2);
-          console.log(allDebts);
 
           return (
             <div className="table__check" key={check.id}>
@@ -65,7 +64,6 @@ const Table = ({ partners, checks, setChecks,handleEditCheck,handleDeleteCheck, 
                     className="table__btn table__checkRemove"
                     onClick={(e) => {
                       e.preventDefault();
-                      console.log("что происходит");
                       handleDeleteCheck(idx);
                     }}
                   >
