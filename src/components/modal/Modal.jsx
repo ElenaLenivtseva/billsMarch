@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import "./modal.scss";
 import Input from "../input/Input";
 import Button from "../button/Button";
-import { individualSpendings } from "../table/countFunctions";
+
+import { validateForm } from "./validateFunctions";
 
 const Modal = ({
   setIsFormOpened,
@@ -21,6 +22,7 @@ const Modal = ({
     others: "0",
   };
   const [form, setForm] = useState(defaultValue || initialForm);
+  const [error, setError] = useState('');
   const handleChange = (e) => {
     const name = e.target.name;
     setForm({
@@ -39,133 +41,18 @@ const Modal = ({
     e.preventDefault();
     setForm(initialForm);
   };
-  function isItEmpty() {
-    if (
-      form.total.length > 0 &&
-      form.spendingFirst.length > 0 &&
-      form.spendingSecond.length > 0 &&
-      form.others.length > 0
-    ) {
-      console.log("Не пустой");
-      return false;
-    } else {
-      console.log("Пустой");
-      return true;
-    }
-  }
-  function isTotalStartsWithZero() {
-    if (form.total[0] === "0") {
-      console.log("TOTAL Начинается с нуля");
-      return true;
-    } else {
-      console.log("TOTAL Не начинается с нуля");
-      return false;
-    }
-  }
-  function isItStartsWithZero() {
-    if (
-      (form.spendingFirst[0] === "0" && form.spendingFirst.length > 1) ||
-      (form.spendingSecond[0] === "0" && form.spendingSecond.length > 1) ||
-      (form.others[0] === "0" && form.others.length > 1)
-    ) {
-      console.log(
-        "Для одного из инпутов или для нескольких: инпут начинается с нуля, хотя он не однозначный"
-      );
-      return true;
-    } else {
-      console.log("Все инпуты начинаются с норм цифры");
-      return false;
-    }
-  }
-  function isUnappropriateValue(
-    empty,
-    inputsStartsWithZero,
-    totalStartsWithZero
-  ) {
-    if (empty || inputsStartsWithZero || totalStartsWithZero) {
-      return;
-    }
-    const total = Number(form.total);
-    const partner1Spendings = individualSpendings(form.spendingFirst);
-    const partner2Spendings = individualSpendings(form.spendingSecond);
-    const othersSpendings = individualSpendings(form.others);
-
-    if (total < partner1Spendings + partner2Spendings + othersSpendings) {
-      console.log("ваши индивидуальные траты превышают итого в чеке");
-      return true;
-    } else {
-      console.log("траты не превышают итого");
-      return false;
-    }
-  }
-  function isWrongFormat() {
-    const regExp1 = /^([0-9]+[.,]?[0-9]+[\s]*)+$/gi;
-    // рег выражение, которое не пропускает .98,н-р, а также буквы.
-    // Проверяет сразу всю строку
-
-    // регулярное выражение, которое допускает строку всего из одного числа, даже если это число 0
-    const regExp2 = /^[0-9]+$/gi;
-
-    let arrayWithNeededProps = [];
-    let result = [];
-
-    Object.entries(form).forEach(function ([key, value]) {
-      if (key === "payer") {
-        return;
-      } else arrayWithNeededProps.push(value);
-    });
-    console.log(arrayWithNeededProps.length);
-    for (let i = 0; i < arrayWithNeededProps.length; i++) {
-      const element = arrayWithNeededProps[i];
-      console.log(element);
-      if (element.match(regExp1) || element.match(regExp2)) {
-        console.log("ok");
-        result.push(false);
-      } else {
-        console.log("не ok");
-        result.push(true);
-      }
-    }
-    if (result.includes(true)) {
-      console.log('какой-то инпут не прошел регвыр')
-      return true
-    } else {
-      return false
-    }
-    
-  }
-  function validateForm() {
-    let empty = isItEmpty();
-    let inputsStartsWithZero = isItStartsWithZero();
-    let totalStartsWithZero = isTotalStartsWithZero();
-    let wrongFormat = isWrongFormat();
-    let unappropriateValue = isUnappropriateValue(
-      empty,
-      inputsStartsWithZero,
-      totalStartsWithZero
-    );
-    // isWrongFormat();
-    // console.log(wrongFormat)
-    if (
-      empty ||
-      inputsStartsWithZero ||
-      totalStartsWithZero ||
-      unappropriateValue ||
-      wrongFormat
-    ) {
-      return false;
-    } else {
-      return true;
-    }
-  }
+  
   const handleAddCheck = (e) => {
     e.preventDefault();
-    if (!validateForm()) return;
+    if (!validateForm(form)) {
+      setError('Перепроверьте правильность введенных данных: все ли поля заполнены, не равно ли итого нулю, не ошиблись ли вы с введенными цифрами (возможно, итого получилось меньше ваших трат), соответствуют ли формату ваши поля (допустимы только положительные цифры, написанные через пробел, недопустимы цифры по типу 0986 .6 00.8 и т.п.)')
+      return;}
     let now = new Date().toString();
     handleSubmit(form, now);
     setForm(initialForm);
     setIsFormOpened(false);
     setCheckToEdit(null);
+    setError('')
   };
   return (
     <div className="modal">
@@ -227,6 +114,7 @@ const Modal = ({
             Oкей
           </Button>
         </form>
+        <p className="modal__error">{error}</p>
       </div>
     </div>
   );
@@ -243,3 +131,5 @@ export default Modal;
 // допустимо два формата 0.25, 86, 900.987 и 81. Т.е. либо цифры через пробел, либо одно число---V
 // траты одного из партнеров не могут превышать итого ---V
 // траты обоих партнеров вместе не могут превышать итого ---V
+
+// есть проблема - 0.9 в начале писать нельзя. Но думаю, что с нынешними ценами это баг, который никогда не сработает
