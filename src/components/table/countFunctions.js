@@ -1,6 +1,6 @@
 export function individualSpendings(partnerSpend) {
   const initialValue = 0;
-  const onlyPartnerArray = partnerSpend.split(", ");
+  const onlyPartnerArray = partnerSpend.split(" ");
 
   onlyPartnerArray.forEach((element) => {
     return Number(element);

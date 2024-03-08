@@ -77,8 +77,11 @@ const Modal = ({
       return false;
     }
   }
-  function isUnappropriateValue(empty, inputsStartsWithZero, totalStartsWithZero) {
-
+  function isUnappropriateValue(
+    empty,
+    inputsStartsWithZero,
+    totalStartsWithZero
+  ) {
     if (empty || inputsStartsWithZero || totalStartsWithZero) {
       return;
     }
@@ -95,17 +98,60 @@ const Modal = ({
       return false;
     }
   }
+  function isWrongFormat() {
+    const regExp1 = /^([0-9]+[.,]?[0-9]+[\s]*)+$/gi;
+    // рег выражение, которое не пропускает .98,н-р, а также буквы.
+    // Проверяет сразу всю строку
 
+    // регулярное выражение, которое допускает строку всего из одного числа, даже если это число 0
+    const regExp2 = /^[0-9]+$/gi;
+
+    let arrayWithNeededProps = [];
+    let result = [];
+
+    Object.entries(form).forEach(function ([key, value]) {
+      if (key === "payer") {
+        return;
+      } else arrayWithNeededProps.push(value);
+    });
+    console.log(arrayWithNeededProps.length);
+    for (let i = 0; i < arrayWithNeededProps.length; i++) {
+      const element = arrayWithNeededProps[i];
+      console.log(element);
+      if (element.match(regExp1) || element.match(regExp2)) {
+        console.log("ok");
+        result.push(false);
+      } else {
+        console.log("не ok");
+        result.push(true);
+      }
+    }
+    if (result.includes(true)) {
+      console.log('какой-то инпут не прошел регвыр')
+      return true
+    } else {
+      return false
+    }
+    
+  }
   function validateForm() {
     let empty = isItEmpty();
     let inputsStartsWithZero = isItStartsWithZero();
     let totalStartsWithZero = isTotalStartsWithZero();
-    let unappropriateValue = isUnappropriateValue(empty, inputsStartsWithZero, totalStartsWithZero);
+    let wrongFormat = isWrongFormat();
+    let unappropriateValue = isUnappropriateValue(
+      empty,
+      inputsStartsWithZero,
+      totalStartsWithZero
+    );
+    // isWrongFormat();
+    // console.log(wrongFormat)
     if (
       empty ||
       inputsStartsWithZero ||
       totalStartsWithZero ||
-      unappropriateValue
+      unappropriateValue ||
+      wrongFormat
     ) {
       return false;
     } else {
@@ -156,7 +202,7 @@ const Modal = ({
           <Input
             placeholder="0"
             labelTitle="ТРАТЫ ПАРТНЕРА 1"
-            labelDescr="Введите траты исключительно Партнера 1. Формат такой: числа отделяются запятой и пробелом. Нецелые числа пишутся через точку. Пример: 142, 77.2, 61"
+            labelDescr="Введите траты исключительно Партнера 1. Формат такой: числа отделяются пробелом. Нецелые числа пишутся через точку или запятую. Пример: 142 77.2 61"
             name="spendingFirst"
             value={form.spendingFirst}
             onChange={(e) => handleChange(e)}
@@ -172,7 +218,7 @@ const Modal = ({
           <Input
             placeholder="0"
             labelTitle="ДРУГОЕ"
-            labelDescr="Возможно, вы покупали что-то другу по его просьбе, и он уже перевел вам деньги за покупку. Т.е. это что-то не общее для вашей пары, ни индивидуальное каждого партнера, а нечто чужое."
+            labelDescr="Возможно, вы покупали что-то другу по его просьбе, и он уже перевел вам деньги за покупку. Т.е. это что-то не общее для вашей пары, ни индивидуальное каждого партнера, а нечто чужое. Формат тот же."
             name="others"
             value={form.others}
             onChange={(e) => handleChange(e)}
@@ -190,9 +236,10 @@ export default Modal;
 
 // правила валидации
 // во-первых все поля не должны быть пусты ---V
-// во-вторых, в них могут быть только символы-цифры, никаких букв и пр.
-// число не может быть вида 0985 -- V, но мб просто 0
-// дробные числа пишутся только через .
-// допустимо два формата 0.25, 86, 900.987 и 81. Т.е. либо цифры через пробел + запятая, либо одно число
+// во-вторых, в них могут быть только символы-цифры, никаких букв ---V
+// число не может быть вида 0985 -- V, но мб просто 0 ---V
+// дробные числа пишутся через .или через , ---V
+
+// допустимо два формата 0.25, 86, 900.987 и 81. Т.е. либо цифры через пробел, либо одно число---V
 // траты одного из партнеров не могут превышать итого ---V
 // траты обоих партнеров вместе не могут превышать итого ---V
