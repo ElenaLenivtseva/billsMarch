@@ -49,7 +49,6 @@ const Modal = ({
     const [resultOfValidation, message] = validateForm(form);
     if (!resultOfValidation) {
       setError(message);
-      // setError('Перепроверьте правильность введенных данных: все ли поля заполнены, не равно ли итого нулю, не ошиблись ли вы с введенными цифрами (возможно, итого получилось меньше ваших трат), соответствуют ли формату ваши поля (допустимы только положительные цифры, написанные через пробел, недопустимы цифры по типу 0986 .6 00.8 и т.п.)')
       return;
     }
     let now = new Date().toString();
@@ -120,9 +119,10 @@ const Modal = ({
             value={form.others}
             onChange={(e) => handleChange(e)}
           />
-          <Button addClass="button_left" onClick={(e) => handleAddCheck(e)}>
+          <Button addClass='button_left' onClick={(e) => handleAddCheck(e)} error={error}>
             Oкей
           </Button>
+          {/* <button onClick={(e) => handleAddCheck(e)} className={error?'error':''}>ok</button> */}
         </form>
         <p className="modal__error">{error}</p>
       </div>

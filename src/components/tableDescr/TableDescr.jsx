@@ -17,31 +17,7 @@ const TableDescr = ({
     e.preventDefault();
     setIsFormOpened(true);
   };
-  const variants = {
-    hidden: {
-      x: -100,
-      opacity: 0,
-      zIndex: 0,
-      
-      transitionEnd: {
-        height: 0,
-      },
-      transition: {
-        duration: 0.6,
-      },
-    },
-    visible: {
-      x: 0,
-      opacity: 1,
-      zIndex: 2,
-      transitionEnd: {
-        height: 'auto',
-      },
-      transition: {
-        duration: 0.6,
-      },
-    },
-  };
+  
   return (
     <section className="tableDescr section">
       <h3 className="sectionSubtitle">Таблица подсчетов</h3>

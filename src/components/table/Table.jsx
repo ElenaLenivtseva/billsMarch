@@ -73,7 +73,7 @@ const Table = ({ partners, checks, setChecks,handleEditCheck,handleDeleteCheck, 
                     отред.
                   </button>
                 </div>
-                <p className="table__checkNumber">Чек {idx}</p>
+                <p className="table__checkNumber">Чек {idx+1}</p>
               </div>
               <div className="table__checkTotal">
                 <p className="table__checkInfo">{check.total}</p>

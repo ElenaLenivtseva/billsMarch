@@ -1,7 +1,10 @@
 import React from "react";
 import "./Button.scss";
 
+
+
 const Button = ({children, addClass, onClick}) => {
+
   return (
     <button className={`button ${addClass}`} onClick={onClick}>
       <p className="button-text">{children}</p>
