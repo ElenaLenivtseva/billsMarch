@@ -1,5 +1,6 @@
 @import '../../stylesCommon/variables';
 @import '../../stylesCommon/_common';
+@import '../../stylesCommon/_mixins';
 
 .table {
     display: flex;
@@ -9,7 +10,12 @@
         font-size: 2rem;
         text-align: center;
     }
-
+    &__wrapper {
+        @include breakpoint($smallTablet) {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+    }
     &__titles {
         background: $black;
         color: $white;
@@ -17,13 +23,17 @@
         align-items: center;
         height: 15rem;
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        @include breakpoint($smallTablet) {
+            height: 100%;
+            grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+            grid-template-columns: 1fr;
+        }
     }
 
     &__title {
         // align-self: center;
 
     }
-
     &__check {
         display: grid;
         height: 12.5rem;
@@ -33,6 +43,11 @@
         color: $white;
 
         border-bottom: 1px solid $pink;
+        @include breakpoint($smallTablet) {
+            height: 100%;
+            grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+            grid-template-columns: 1fr;
+        }
 
 
     }
@@ -87,6 +102,11 @@
         font-size: 3rem;
         padding: 4.5rem 14rem;
         background: linear-gradient(to right, rgba(255, 173, 126, 1), rgba(255, 173, 126, 0.3));
+        @include breakpoint($smallTablet) {
+            padding: 2rem;
+            text-align: center;
+            font-size: 2rem;
+        }
     }
 
     &__total-bold {

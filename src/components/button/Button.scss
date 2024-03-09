@@ -45,6 +45,9 @@
 
 .partners__btn {
     margin-top: 4rem;
+    @include breakpoint($smallTablet) {
+        margin-top: 2rem;
+    }
 }
 
 .table__reset {

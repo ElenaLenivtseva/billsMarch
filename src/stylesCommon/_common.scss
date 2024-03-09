@@ -1,12 +1,33 @@
 @import './variables';
+@import './mixins';
 .section {
     padding: 10rem 12rem;
+    @include breakpoint($tablet) {
+        padding: 4rem 7rem;
+    }
+    @include breakpoint($mobile) {
+        padding: 3rem;
+    }
 }
 .sectionSubtitle {
     font-size: 5rem;
     color: $black;
+    @include breakpoint($smallTablet) {
+        margin-bottom: 1.5rem;
+    }
 }
 .mainText {
     font-size: 2rem;
     color: $black;
+}
+html {
+    height: 100%;
+	font-family: Inter;
+    font-size: 10px;
+    @include breakpoint($tablet) {
+        font-size: 8px;  
+    }
+    @include breakpoint($mobile) {
+        font-size: 6px;  
+    }
 }

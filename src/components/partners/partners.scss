@@ -1,9 +1,14 @@
 @import '../../stylesCommon/variables';
 @import '../../stylesCommon/_common';
+@import '../../stylesCommon/_mixins';
 
 .partners {
     &__title {
         margin-bottom: 7.5rem;
+        @include breakpoint($tablet) {
+            margin-bottom: 1.5rem;
+        }
+        
     }
     &__anim-block {
         min-height: 6rem;
@@ -11,6 +16,10 @@
     &__content {
         display: flex;
         gap: 5rem;
+        @include breakpoint($tablet) {
+            flex-direction: column-reverse;
+        }
+        
     }
 
     &__form {
@@ -28,6 +37,9 @@
 
         &:not(:last-child) {
             margin-bottom: 2.5rem;
+        }
+        @include breakpoint($tablet) {
+            width: 80%;
         }
     }
     &__namePartner {

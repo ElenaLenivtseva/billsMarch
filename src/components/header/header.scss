@@ -1,4 +1,5 @@
 @import '../../stylesCommon/_variables';
+@import '../../stylesCommon/_mixins';
 @import '../../stylesCommon/_common';
 .header {
     background: $black;
@@ -10,9 +11,23 @@
         font-size: 7rem;
         margin-bottom: 6.7rem;
         font-weight: 800;
+        @include breakpoint($smallTablet) {
+            font-size: 5rem;
+            margin-bottom: 4rem;
+        }
+        @include breakpoint($mobile) {
+            font-size: 4rem;
+            margin-bottom: 3rem;
+        }
     }
     &__subtitle {
         font-size: 3rem;
         font-weight: 400;
+        @include breakpoint($smallTablet) {
+            font-size: 2.5rem;
+        }
+        @include breakpoint($mobile) {
+            font-size: 1.8rem;
+        }
     }
 }

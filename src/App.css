@@ -1,3 +1,4 @@
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -23,9 +24,6 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 html {
-	height: 100%;
-	font-family: Inter;
-    font-size: 62.5%;
 }
 body {
 	line-height: 1;
@@ -68,4 +66,5 @@ a {
 
 .app {
 	position: relative;
+	
 }

@@ -1,5 +1,6 @@
 @import '../../stylesCommon/variables';
 @import '../../stylesCommon/_common';
+@import '../../stylesCommon/_mixins';
 
 .tableDescr {
     &__top {
@@ -7,6 +8,19 @@
         margin-bottom: 14.6rem;
         display: flex;
         align-items: center;
+
+        @include breakpoint($smallTablet) {
+            flex-direction: column-reverse;
+            align-items: flex-start;
+            margin-bottom: 7rem;
+        }
+
+        & button {
+            @include breakpoint($smallTablet) {
+                margin-top: 5rem;
+                margin-left: 9%;
+            }
+        }
     }
 
     &__explan {
@@ -22,4 +36,11 @@
             margin-bottom: 1em;
         }
     }
+
+    &__bottom {
+        @include breakpoint($smallTablet) {
+            margin-bottom: 2rem;
+        }
+    }
+
 }
