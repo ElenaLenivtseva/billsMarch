@@ -7,48 +7,7 @@ import TableDescr from "./components/tableDescr/TableDescr";
 import { useState } from "react";
 
 const initialChecks = [
-  {
-    id: "1",
-    total: "800",
-    payer: "Партнер 1",
-    spendingFirst: "200 60 30",
-    spendingSecond: "300",
-    others: "0",
-  },
-  {
-    id: "2",
-    total: "600",
-    payer: "Партнер 1",
-    spendingFirst: "100 50 20",
-    spendingSecond: "200",
-    others: "0",
-  },
-  {
-    id: "3",
-    total: "500",
-    payer: "Партнер 1",
-    spendingFirst: "200 10",
-    spendingSecond: "0",
-    others: "0",
-  },
-  {
-    id: "4",
-    total: "1000",
-    payer: "Партнер 1",
-    spendingFirst: "300 200 100",
-    spendingSecond: "0",
-    others: "0",
-  },
-  {
-    id: "5",
-    total: "900",
-    payer: "Партнер 1",
-    spendingFirst: "100 10",
-    spendingSecond: "0",
-    // debtFirst: "не должен",
-    // debtSecond: "280",
-    others: "0",
-  },
+  
 ];
 
 function App() {
@@ -84,7 +43,38 @@ function App() {
     <div className="App">
       <Header />
       <Partners partners={partners} setPartners={setPartners} />
-      <TableDescr setIsFormOpened={setIsFormOpened} />
+      <TableDescr setIsFormOpened={setIsFormOpened}
+          isFormOpened={isFormOpened}
+          partners={partners}
+          setCheckToEdit={setCheckToEdit}
+          checks={checks}
+          checkToEdit={checkToEdit}
+          handleSubmit={handleSubmit}/>
+      {/* {isFormOpened && (
+        <Modal
+          setIsFormOpened={setIsFormOpened}
+          isFormOpened={isFormOpened}
+          partners={partners}
+          checks={checks}
+          setChecks={setChecks}
+          setCheckToEdit={setCheckToEdit}
+          defaultValue={checkToEdit !== null && checks[checkToEdit]}
+          handleSubmit={handleSubmit}
+        />
+      )} */}
+      {/* {isFormOpened && (
+        <Modal
+          setIsFormOpened={setIsFormOpened}
+          isFormOpened={isFormOpened}
+          partners={partners}
+          setCheckToEdit={setCheckToEdit}
+          defaultValue={checkToEdit !== null && checks[checkToEdit]}
+          handleSubmit={handleSubmit}
+        />
+      )} */}
+      
+        
+      
       <Table
         partners={partners}
         checks={checks}
@@ -94,17 +84,7 @@ function App() {
         handleReset={handleReset}
 
       />
-      {isFormOpened && (
-        <Modal
-          setIsFormOpened={setIsFormOpened}
-          partners={partners}
-          checks={checks}
-          setChecks={setChecks}
-          setCheckToEdit={setCheckToEdit}
-          defaultValue={checkToEdit !== null && checks[checkToEdit]}
-          handleSubmit={handleSubmit}
-        />
-      )}
+      
     </div>
   );
 }

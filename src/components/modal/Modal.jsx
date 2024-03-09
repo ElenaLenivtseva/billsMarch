@@ -4,15 +4,16 @@ import Input from "../input/Input";
 import Button from "../button/Button";
 
 import { validateForm } from "./validateFunctions";
+import {motion} from 'framer-motion'
 
 const Modal = ({
   setIsFormOpened,
+  isFormOpened,
   partners,
-  checks,
-  setChecks,
   setCheckToEdit,
   defaultValue,
   handleSubmit,
+  variants
 }) => {
   const initialForm = {
     total: "0",
@@ -22,7 +23,7 @@ const Modal = ({
     others: "0",
   };
   const [form, setForm] = useState(defaultValue || initialForm);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const handleChange = (e) => {
     const name = e.target.name;
     setForm({
@@ -40,22 +41,31 @@ const Modal = ({
   const resetForm = (e) => {
     e.preventDefault();
     setForm(initialForm);
+    setError("");
   };
-  
+
   const handleAddCheck = (e) => {
     e.preventDefault();
-    if (!validateForm(form)) {
-      setError('Перепроверьте правильность введенных данных: все ли поля заполнены, не равно ли итого нулю, не ошиблись ли вы с введенными цифрами (возможно, итого получилось меньше ваших трат), соответствуют ли формату ваши поля (допустимы только положительные цифры, написанные через пробел, недопустимы цифры по типу 0986 .6 00.8 и т.п.)')
-      return;}
+    const [resultOfValidation, message] = validateForm(form);
+    if (!resultOfValidation) {
+      setError(message);
+      // setError('Перепроверьте правильность введенных данных: все ли поля заполнены, не равно ли итого нулю, не ошиблись ли вы с введенными цифрами (возможно, итого получилось меньше ваших трат), соответствуют ли формату ваши поля (допустимы только положительные цифры, написанные через пробел, недопустимы цифры по типу 0986 .6 00.8 и т.п.)')
+      return;
+    }
     let now = new Date().toString();
     handleSubmit(form, now);
     setForm(initialForm);
     setIsFormOpened(false);
     setCheckToEdit(null);
-    setError('')
+    setError("");
   };
   return (
-    <div className="modal">
+    <motion.div
+      className="modal"
+      variants={variants}
+      initial={isFormOpened ? "hidden" : "visible"}
+      animate={isFormOpened ? "visible" : "hidden"}
+    >
       <div className="modal__content">
         <div className="modal__actions">
           <p className="modal__icon modal__reset" onClick={(e) => resetForm(e)}>
@@ -116,7 +126,7 @@ const Modal = ({
         </form>
         <p className="modal__error">{error}</p>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

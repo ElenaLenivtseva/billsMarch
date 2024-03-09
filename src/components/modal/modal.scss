@@ -3,10 +3,14 @@
 
 .modal {
     display: flex;
-    justify-content: center;
     align-items: center;
-    background: $black;
+    transition: all 0.5s ease-in-out;
 
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    margin-top: 5rem;
     &__content {
         width: 60%;
         background: $white;
@@ -15,33 +19,38 @@
         padding-right: 6.4rem;
         display: flex;
         flex-direction: column;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     }
 
     &__form {
         display: flex;
         flex-direction: column;
     }
+
     &__error {
         font-size: 2rem;
         margin-top: 3rem;
         padding-left: 6.4rem;
         color: $pink;
     }
+
     &__actions {
         align-self: flex-end;
         display: flex;
         font-size: 4rem;
         gap: 2rem;
     }
+
     &__icon {
         transition: 0.3s ease-in-out;
         -webkit-transition: 0.3s ease-in-out;
         -moz-transition: 0.3s ease-in-out;
         -ms-transition: 0.3s ease-in-out;
         -o-transition: 0.3s ease-in-out;
+
         &:hover {
             color: $pink;
             cursor: pointer;
         }
-}
+    }
 }

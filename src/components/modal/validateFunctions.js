@@ -64,14 +64,15 @@ function isWrongFormat(form) {
   const regExp2 = /^[0-9]+$/gi;
 
   let arrayWithNeededProps = [];
-  let result = [];
+  
 
   Object.entries(form).forEach(function ([key, value]) {
     if (key === "payer") {
       return;
     } else arrayWithNeededProps.push(value);
   });
-  console.log(arrayWithNeededProps.length);
+
+  let result = [];
   for (let i = 0; i < arrayWithNeededProps.length; i++) {
     const element = arrayWithNeededProps[i];
     if (element.match(regExp1) || element.match(regExp2)) {
@@ -98,6 +99,22 @@ export function validateForm(form) {
     inputsStartsWithZero,
     totalStartsWithZero
   );
+  let textError = [];
+  if (empty) {
+    textError.push('Поля не заполнены. ')
+  }
+  if (inputsStartsWithZero) {
+    textError.push('Многозначное число с нулем в качестве первой цифры. ')
+  }
+  if (totalStartsWithZero) {
+    textError.push('Итого начинается с нуля. ')
+  }
+  if (wrongFormat) {
+    textError.push('Поля не соответствуют формату. ')
+  }
+  if (totalLessThanSpends) {
+    textError.push('Итого меньше, чем траты. ')
+  }
   if (
     empty ||
     inputsStartsWithZero ||
@@ -105,8 +122,8 @@ export function validateForm(form) {
     totalLessThanSpends ||
     wrongFormat
   ) {
-    return false;
+    return [false, textError.join('')];
   } else {
-    return true;
+    return [true, ''];
   }
 }
