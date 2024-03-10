@@ -6,9 +6,7 @@ import Table from "./components/table/Table";
 import TableDescr from "./components/tableDescr/TableDescr";
 import { useState } from "react";
 
-const initialChecks = [
-  
-];
+const initialChecks = [];
 
 function App() {
   const [partners, setPartners] = useState({
@@ -31,7 +29,7 @@ function App() {
   };
   const handleSubmit = (newCheck, now) => {
     checkToEdit === null
-      ? setChecks([...checks, {...newCheck, id: now}])
+      ? setChecks([...checks, { ...newCheck, id: now }])
       : setChecks(
           checks.map((currCheck, idx) => {
             if (idx !== checkToEdit) return currCheck;
@@ -43,38 +41,15 @@ function App() {
     <div className="App">
       <Header />
       <Partners partners={partners} setPartners={setPartners} />
-      <TableDescr setIsFormOpened={setIsFormOpened}
-          isFormOpened={isFormOpened}
-          partners={partners}
-          setCheckToEdit={setCheckToEdit}
-          checks={checks}
-          checkToEdit={checkToEdit}
-          handleSubmit={handleSubmit}/>
-      {/* {isFormOpened && (
-        <Modal
-          setIsFormOpened={setIsFormOpened}
-          isFormOpened={isFormOpened}
-          partners={partners}
-          checks={checks}
-          setChecks={setChecks}
-          setCheckToEdit={setCheckToEdit}
-          defaultValue={checkToEdit !== null && checks[checkToEdit]}
-          handleSubmit={handleSubmit}
-        />
-      )} */}
-      {/* {isFormOpened && (
-        <Modal
-          setIsFormOpened={setIsFormOpened}
-          isFormOpened={isFormOpened}
-          partners={partners}
-          setCheckToEdit={setCheckToEdit}
-          defaultValue={checkToEdit !== null && checks[checkToEdit]}
-          handleSubmit={handleSubmit}
-        />
-      )} */}
-      
-        
-      
+      <TableDescr
+        setIsFormOpened={setIsFormOpened}
+        isFormOpened={isFormOpened}
+        partners={partners}
+        setCheckToEdit={setCheckToEdit}
+        checks={checks}
+        checkToEdit={checkToEdit}
+        handleSubmit={handleSubmit}
+      />
       <Table
         partners={partners}
         checks={checks}
@@ -82,9 +57,7 @@ function App() {
         handleEditCheck={handleEditCheck}
         handleDeleteCheck={handleDeleteCheck}
         handleReset={handleReset}
-
       />
-      
     </div>
   );
 }

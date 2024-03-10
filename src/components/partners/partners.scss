@@ -18,7 +18,9 @@
         gap: 5rem;
         @include breakpoint($tablet) {
             flex-direction: column-reverse;
+            gap: 2rem;
         }
+        
         
     }
 

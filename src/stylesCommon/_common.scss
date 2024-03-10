@@ -3,7 +3,7 @@
 .section {
     padding: 10rem 12rem;
     @include breakpoint($tablet) {
-        padding: 4rem 7rem;
+        padding: 5rem 7rem;
     }
     @include breakpoint($mobile) {
         padding: 3rem;
