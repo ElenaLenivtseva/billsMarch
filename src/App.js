@@ -1,6 +1,5 @@
 import "./App.css";
 import Header from "./components/header/Header";
-import Modal from "./components/modal/Modal";
 import Partners from "./components/partners/Partners";
 import Table from "./components/table/Table";
 import TableDescr from "./components/tableDescr/TableDescr";
@@ -23,10 +22,7 @@ function App() {
   const handleDeleteCheck = (targetIndex) => {
     setChecks(checks.filter((_, idx) => idx !== targetIndex));
   };
-  const handleReset = (e) => {
-    e.preventDefault();
-    setChecks([]);
-  };
+  
   const handleSubmit = (newCheck, now) => {
     checkToEdit === null
       ? setChecks([...checks, { ...newCheck, id: now }])
@@ -56,7 +52,6 @@ function App() {
         setChecks={setChecks}
         handleEditCheck={handleEditCheck}
         handleDeleteCheck={handleDeleteCheck}
-        handleReset={handleReset}
       />
     </div>
   );

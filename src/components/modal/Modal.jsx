@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import "./modal.scss";
 import Input from "../input/Input";
 import Button from "../button/Button";
-
 import { validateForm } from "./validateFunctions";
-import {motion} from 'framer-motion'
+import { motion } from "framer-motion";
+
+
 
 const Modal = ({
   setIsFormOpened,
@@ -13,7 +14,7 @@ const Modal = ({
   setCheckToEdit,
   defaultValue,
   handleSubmit,
-  variants
+  variants,
 }) => {
   const initialForm = {
     total: "0",
@@ -35,7 +36,6 @@ const Modal = ({
     e.preventDefault();
     setCheckToEdit(null);
     setIsFormOpened(false);
-
     setForm(initialForm);
   };
   const resetForm = (e) => {
@@ -119,7 +119,11 @@ const Modal = ({
             value={form.others}
             onChange={(e) => handleChange(e)}
           />
-          <Button addClass='button_left' onClick={(e) => handleAddCheck(e)} error={error}>
+          <Button
+            addClass="button_left"
+            onClick={(e) => handleAddCheck(e)}
+            error={error}
+          >
             Oкей
           </Button>
           {/* <button onClick={(e) => handleAddCheck(e)} className={error?'error':''}>ok</button> */}

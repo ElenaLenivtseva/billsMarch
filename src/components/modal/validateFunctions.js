@@ -87,7 +87,6 @@ function isWrongFormat(form) {
     return false;
   }
 }
-
 export function validateForm(form) {
   const empty = isItEmpty(form);
   const inputsStartsWithZero = isItStartsWithZero(form);

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./table.scss";
 import Button from "../button/Button";
 import TableTitles from "./TableTitles";
@@ -7,7 +7,6 @@ import {
   countDebtOfTheCheck,
   totalDebt,
 } from "./countFunctions";
-import { useEffect } from "react";
 import TableContent from "./TableContent";
 
 const Table = ({
@@ -16,14 +15,17 @@ const Table = ({
   setChecks,
   handleEditCheck,
   handleDeleteCheck,
-  handleReset,
 }) => {
   const [windowWidth, setWindowWidth] = useState(null);
   useEffect(() => {
-    let size = window.innerWidth;
+    const size = window.innerWidth;
     setWindowWidth(size);
   }, []);
   let allDebts = 0;
+  const handleReset = (e) => {
+    e.preventDefault();
+    setChecks([]);
+  };
 
   return (
     <div className="table">
