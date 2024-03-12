@@ -55,7 +55,7 @@ function isTotalLessThanSpends(
 }
 
 function isWrongFormat(form) {
-  const regExp1 = /^([0-9]+[.,]?[0-9]+[\s]*)+$/gi;
+  const regExp1 = /^([0-9]+[.,]?[0-9]+[\s]*)+$/gi; 
   // рег выражение, которое не пропускает .98,н-р, а также буквы.
   // Проверяет сразу всю строку
 
