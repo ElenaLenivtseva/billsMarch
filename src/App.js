@@ -6,9 +6,16 @@ import TableDescr from "./components/tableDescr/TableDescr";
 import { useState, useEffect } from "react";
 
 function App() {
-  const [partners, setPartners] = useState({
-    partner1: "Партнер 1",
-    partner2: "Партнер 2",
+  const [partners, setPartners] = useState(() => {
+    const savedPartners = localStorage.getItem("partners");
+    if (savedPartners) {
+      return JSON.parse(savedPartners);
+    } else {
+      return {
+        partner1: "Партнер 1",
+        partner2: "Партнер 2",
+      };
+    }
   });
   const [isFormOpened, setIsFormOpened] = useState(false);
   const [checks, setChecks] = useState(() => {
@@ -19,9 +26,14 @@ function App() {
       return [];
     }
   });
+
   useEffect(() => {
     localStorage.setItem("checks", JSON.stringify(checks));
   }, [checks]);
+
+  useEffect(() => {
+    localStorage.setItem("partners", JSON.stringify(partners));
+  }, [partners]);
 
   const [checkToEdit, setCheckToEdit] = useState(null);
   const handleEditCheck = (idx) => {
