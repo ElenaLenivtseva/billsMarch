@@ -55,7 +55,7 @@ function isTotalLessThanSpends(
 }
 
 function isWrongFormat(form) {
-  const regExp1 = /^([0-9]+[.,]?[0-9]+[\s]*)+$/gi; 
+  const regExp1 = /^([0-9]+[.,]?[0-9]+[\s]*)+$/gi;
   // рег выражение, которое не пропускает .98,н-р, а также буквы.
   // Проверяет сразу всю строку
 
@@ -63,9 +63,9 @@ function isWrongFormat(form) {
   const regExp2 = /^[0-9]+$/gi;
 
   let arrayWithNeededProps = [];
-
+  console.log(form);
   Object.entries(form).forEach(function ([key, value]) {
-    if (key === "payer") {
+    if (key === "payer" || key === "id") {
       return;
     } else arrayWithNeededProps.push(value);
   });
@@ -73,6 +73,7 @@ function isWrongFormat(form) {
   let result = [];
   for (let i = 0; i < arrayWithNeededProps.length; i++) {
     const element = arrayWithNeededProps[i];
+
     if (element.match(regExp1) || element.match(regExp2)) {
       result.push(false);
     } else {
