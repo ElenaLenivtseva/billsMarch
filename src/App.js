@@ -3,9 +3,7 @@ import Header from "./components/header/Header";
 import Partners from "./components/partners/Partners";
 import Table from "./components/table/Table";
 import TableDescr from "./components/tableDescr/TableDescr";
-import { useState } from "react";
-
-const initialChecks = [];
+import { useState, useEffect } from "react";
 
 function App() {
   const [partners, setPartners] = useState({
@@ -13,7 +11,18 @@ function App() {
     partner2: "Партнер 2",
   });
   const [isFormOpened, setIsFormOpened] = useState(false);
-  const [checks, setChecks] = useState(initialChecks);
+  const [checks, setChecks] = useState(() => {
+    const savedChecks = localStorage.getItem("checks");
+    if (savedChecks) {
+      return JSON.parse(savedChecks);
+    } else {
+      return [];
+    }
+  });
+  useEffect(() => {
+    localStorage.setItem("checks", JSON.stringify(checks));
+  }, [checks]);
+
   const [checkToEdit, setCheckToEdit] = useState(null);
   const handleEditCheck = (idx) => {
     setCheckToEdit(idx);
@@ -22,7 +31,7 @@ function App() {
   const handleDeleteCheck = (targetIndex) => {
     setChecks(checks.filter((_, idx) => idx !== targetIndex));
   };
-  
+
   const handleSubmit = (newCheck, now) => {
     checkToEdit === null
       ? setChecks([...checks, { ...newCheck, id: now }])
