@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./partners.scss";
 import Button from "../button/Button";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 const variants = {
   hidden: {
     x: -100,
@@ -41,47 +41,62 @@ const Partners = ({ partners, setPartners }) => {
       <h3 className="sectionSubtitle partners__title">Имена партнеров</h3>
       <div className="partners__content">
         <form className="partners__form">
-          <motion.div
-            className="partners__anim-block"
-            variants={variants}
-            initial={isEditing ? "hidden" : "visible"}
-            animate={isEditing ? "visible" : "hidden"}
-          >
-            <input
-              type="text"
-              className="partners__input"
-              placeholder="Партнер 1"
-              value={partners.partner1}
-              onChange={(e) =>
-                setPartners({ ...partners, partner1: e.target.value })
-              }
-            />
-            <input
-              type="text"
-              className="partners__input"
-              placeholder="Партнер 2"
-              value={partners.partner2}
-              onChange={(e) =>
-                setPartners({ ...partners, partner2: e.target.value })
-              }
-            />
-            <Button addClass="partners__btn" onClick={(e) => handleClick(e)}>
-              {isEditing ? "Сохранить" : "Редактировать"}
-            </Button>
-          </motion.div>
-
-          <motion.div
-            className="partners__anim-block"
-            variants={variants}
-            initial={!isEditing ? "hidden" : "visible"}
-            animate={!isEditing ? "visible" : "hidden"}
-          >
-            <p className="partners__namePartner">Имя: {partners.partner1}</p>
-            <p className="partners__namePartner">Имя: {partners.partner2}</p>
-            <Button addClass="partners__btn" onClick={(e) => handleClick(e)}>
-              {isEditing ? "Сохранить" : "Редактировать"}
-            </Button>
-          </motion.div>
+          <AnimatePresence>
+            {isEditing&&<motion.div
+              className="partners__anim-block"
+              key='inputs'
+              variants={variants}
+              initial='hidden'
+              animate='visible'
+              exit='hidden'
+            >
+              <input
+                type="text"
+                className="partners__input"
+                placeholder="Партнер 1"
+                value={partners.partner1}
+                onChange={(e) =>
+                  setPartners({ ...partners, partner1: e.target.value })
+                }
+              />
+              <input
+                type="text"
+                className="partners__input"
+                placeholder="Партнер 2"
+                value={partners.partner2}
+                onChange={(e) =>
+                  setPartners({ ...partners, partner2: e.target.value })
+                }
+              />
+              <Button addClass="partners__btn" onClick={(e) => handleClick(e)}>
+                Сохранить
+              </Button>
+            </motion.div>}
+            
+            {!isEditing && (
+              <motion.div
+                className="partners__anim-block"
+                variants={variants}
+                key='names'
+                initial='hidden'
+                animate='visible'
+                exit='hidden'
+              >
+                <p className="partners__namePartner">
+                  Имя: {partners.partner1}
+                </p>
+                <p className="partners__namePartner">
+                  Имя: {partners.partner2}
+                </p>
+                <Button
+                  addClass="partners__btn"
+                  onClick={(e) => handleClick(e)}
+                >
+                  Редактировать
+                </Button>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </form>
         <div className="partners__explan">
           <p className="mainText partners__text-explan">

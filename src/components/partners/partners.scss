@@ -11,10 +11,11 @@
         
     }
     &__content {
-        display: flex;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
         gap: 5rem;
         @include breakpoint($tablet) {
-            flex-direction: column-reverse;
+            grid-template-columns: 1fr;
             gap: 2rem;
         }
         
@@ -50,7 +51,11 @@
         }
     }
     &__explan {
-        // align-self: center;
+        @include breakpoint($tablet) {
+            order: -1;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
     }
 
     &__text-explan {
