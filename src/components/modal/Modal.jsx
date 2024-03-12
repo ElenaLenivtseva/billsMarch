@@ -3,18 +3,13 @@ import "./modal.scss";
 import Input from "../input/Input";
 import Button from "../button/Button";
 import { validateForm } from "./validateFunctions";
-import { motion } from "framer-motion";
-
-
 
 const Modal = ({
   setIsFormOpened,
-  isFormOpened,
   partners,
   setCheckToEdit,
   defaultValue,
   handleSubmit,
-  variants,
 }) => {
   const initialForm = {
     total: "0",
@@ -59,12 +54,7 @@ const Modal = ({
     setError("");
   };
   return (
-    <motion.div
-      className="modal"
-      variants={variants}
-      initial={isFormOpened ? "hidden" : "visible"}
-      animate={isFormOpened ? "visible" : "hidden"}
-    >
+    <div className="modal">
       <div className="modal__content">
         <div className="modal__actions">
           <p className="modal__icon modal__reset" onClick={(e) => resetForm(e)}>
@@ -126,11 +116,10 @@ const Modal = ({
           >
             Oкей
           </Button>
-          {/* <button onClick={(e) => handleAddCheck(e)} className={error?'error':''}>ok</button> */}
         </form>
         <p className="modal__error">{error}</p>
       </div>
-    </motion.div>
+    </div>
   );
 };
 
@@ -147,3 +136,4 @@ export default Modal;
 // траты обоих партнеров вместе не могут превышать итого ---V
 
 // есть проблема - 0.9 в начале писать нельзя. Но думаю, что с нынешними ценами это баг, который никогда не сработает
+// еще проблема, даже серьезный баг. Режим редактирования не работает, потому что форма не проходит валидацию. Но если очистить открытую форму в режиме редактирования, а потом вписать заново то же самое, проверку проходит, голову сломала, не понимаю, почему так

@@ -9,7 +9,7 @@ const TableContent = ({
   partner2Spendings,
   othersSpendings,
   debtOfParther1,
-  debtOfParther2
+  debtOfParther2,
 }) => {
   return (
     <>

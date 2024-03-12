@@ -12,6 +12,7 @@
     -ms-transition: all 0.5s ease-in-out;
     -o-transition: all 0.5s ease-in-out;
     margin-top: 5rem;
+
     &__content {
         width: 60%;
         background: $white;
@@ -21,6 +22,7 @@
         display: flex;
         flex-direction: column;
         box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
         @include breakpoint($tablet) {
             width: 100%;
         }
@@ -58,6 +60,7 @@
         }
     }
 }
+
 .button__error {
     background: $pink;
 }

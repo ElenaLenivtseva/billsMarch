@@ -1,8 +1,8 @@
 import "./App.css";
 import Header from "./components/header/Header";
 import Partners from "./components/partners/Partners";
-import Table from "./components/table/Table";
 import TableDescr from "./components/tableDescr/TableDescr";
+import Table from "./components/table/Table";
 import { useState, useEffect } from "react";
 
 function App() {
@@ -17,7 +17,6 @@ function App() {
       };
     }
   });
-  const [isFormOpened, setIsFormOpened] = useState(false);
   const [checks, setChecks] = useState(() => {
     const savedChecks = localStorage.getItem("checks");
     if (savedChecks) {
@@ -26,6 +25,7 @@ function App() {
       return [];
     }
   });
+  const [isFormOpened, setIsFormOpened] = useState(false);
 
   useEffect(() => {
     localStorage.setItem("checks", JSON.stringify(checks));

@@ -1,6 +1,5 @@
 import { individualSpendings } from "../table/countFunctions";
 
-
 function isItEmpty(form) {
   if (
     form.total.length > 0 &&
@@ -64,7 +63,6 @@ function isWrongFormat(form) {
   const regExp2 = /^[0-9]+$/gi;
 
   let arrayWithNeededProps = [];
-  
 
   Object.entries(form).forEach(function ([key, value]) {
     if (key === "payer") {
@@ -100,19 +98,19 @@ export function validateForm(form) {
   );
   let textError = [];
   if (empty) {
-    textError.push('Поля не заполнены. ')
+    textError.push("Поля не заполнены. ");
   }
   if (inputsStartsWithZero) {
-    textError.push('Многозначное число с нулем в качестве первой цифры. ')
+    textError.push("Многозначное число с нулем в качестве первой цифры. ");
   }
   if (totalStartsWithZero) {
-    textError.push('Итого начинается с нуля. ')
+    textError.push("Итого начинается с нуля. ");
   }
   if (wrongFormat) {
-    textError.push('Поля не соответствуют формату. ')
+    textError.push("Поля не соответствуют формату. ");
   }
   if (totalLessThanSpends) {
-    textError.push('Итого меньше, чем траты. ')
+    textError.push("Итого меньше, чем траты. ");
   }
   if (
     empty ||
@@ -121,8 +119,8 @@ export function validateForm(form) {
     totalLessThanSpends ||
     wrongFormat
   ) {
-    return [false, textError.join('')];
+    return [false, textError.join("")];
   } else {
-    return [true, ''];
+    return [true, ""];
   }
 }

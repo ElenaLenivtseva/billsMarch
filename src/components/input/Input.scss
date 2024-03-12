@@ -12,9 +12,10 @@
         margin-bottom: 1rem;
         text-transform: uppercase;
         padding-left: 6.8rem;
+
         @include breakpoint($smallTablet) {
             font-size: 2.5rem;
-            
+
         }
     }
 
@@ -22,9 +23,10 @@
         font-size: 2rem;
         margin-bottom: 1.6rem;
         padding-left: 6.8rem;
+
         @include breakpoint($smallTablet) {
             font-size: 1.5rem;
-            
+
         }
     }
 

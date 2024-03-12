@@ -27,7 +27,7 @@ const Input = ({
             {partners.partner1}
           </option>
           <option value={partners.partner2} className="input__option">
-          {partners.partner2}
+            {partners.partner2}
           </option>
         </select>
       </div>

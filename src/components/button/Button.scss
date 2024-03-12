@@ -14,6 +14,7 @@
     -moz-transform: skew(30deg);
     -ms-transform: skew(30deg);
     -o-transform: skew(30deg);
+
     @include breakpoint($smallTablet) {
         width: 70%;
     }
@@ -48,6 +49,7 @@
 
 .partners__btn {
     margin-top: 4rem;
+
     @include breakpoint($smallTablet) {
         margin-top: 2rem;
     }

@@ -42,45 +42,50 @@ const Partners = ({ partners, setPartners }) => {
       <div className="partners__content">
         <form className="partners__form">
           <AnimatePresence>
-            {isEditing&&<motion.div
-              className="partners__anim-block"
-              key='inputs'
-              variants={variants}
-              initial='hidden'
-              animate='visible'
-              exit='hidden'
-            >
-              <input
-                type="text"
-                className="partners__input"
-                placeholder="Партнер 1"
-                value={partners.partner1}
-                onChange={(e) =>
-                  setPartners({ ...partners, partner1: e.target.value })
-                }
-              />
-              <input
-                type="text"
-                className="partners__input"
-                placeholder="Партнер 2"
-                value={partners.partner2}
-                onChange={(e) =>
-                  setPartners({ ...partners, partner2: e.target.value })
-                }
-              />
-              <Button addClass="partners__btn" onClick={(e) => handleClick(e)}>
-                Сохранить
-              </Button>
-            </motion.div>}
-            
+            {isEditing && (
+              <motion.div
+                className="partners__anim-block"
+                key="inputs"
+                variants={variants}
+                initial="hidden"
+                animate="visible"
+                exit="hidden"
+              >
+                <input
+                  type="text"
+                  className="partners__input"
+                  placeholder="Партнер 1"
+                  value={partners.partner1}
+                  onChange={(e) =>
+                    setPartners({ ...partners, partner1: e.target.value })
+                  }
+                />
+                <input
+                  type="text"
+                  className="partners__input"
+                  placeholder="Партнер 2"
+                  value={partners.partner2}
+                  onChange={(e) =>
+                    setPartners({ ...partners, partner2: e.target.value })
+                  }
+                />
+                <Button
+                  addClass="partners__btn"
+                  onClick={(e) => handleClick(e)}
+                >
+                  Сохранить
+                </Button>
+              </motion.div>
+            )}
+
             {!isEditing && (
               <motion.div
                 className="partners__anim-block"
                 variants={variants}
-                key='names'
-                initial='hidden'
-                animate='visible'
-                exit='hidden'
+                key="names"
+                initial="hidden"
+                animate="visible"
+                exit="hidden"
               >
                 <p className="partners__namePartner">
                   Имя: {partners.partner1}

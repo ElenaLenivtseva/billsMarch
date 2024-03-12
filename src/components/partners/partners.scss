@@ -5,21 +5,24 @@
 .partners {
     &__title {
         margin-bottom: 7.5rem;
+
         @include breakpoint($tablet) {
             margin-bottom: 1.5rem;
         }
-        
+
     }
+
     &__content {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 5rem;
+
         @include breakpoint($tablet) {
             grid-template-columns: 1fr;
             gap: 2rem;
         }
-        
-        
+
+
     }
 
     &__form {
@@ -38,10 +41,12 @@
         &:not(:last-child) {
             margin-bottom: 2.5rem;
         }
+
         @include breakpoint($tablet) {
             width: 80%;
         }
     }
+
     &__namePartner {
         font-size: 3rem;
         color: $black;
@@ -50,6 +55,7 @@
             margin-bottom: 2.5rem;
         }
     }
+
     &__explan {
         @include breakpoint($tablet) {
             order: -1;
@@ -61,7 +67,7 @@
     &__text-explan {
         color: $black;
     }
-    
+
     // &__btn {
     //     margin-top: 4rem;
     //     font-size: 3rem;
